@@ -1,0 +1,47 @@
+# Include documentation
+include README.md
+include LICENSE
+include CHANGELOG.md
+
+# Include configuration files
+include pyproject.toml
+include requirements.txt
+
+# Include examples
+recursive-include examples *.py
+
+# Include tests
+recursive-include tests *.py
+
+# Include type stubs if any
+recursive-include src *.pyi
+
+# Exclude development and build files
+exclude test_*.py
+exclude .gitignore
+exclude .flake8
+exclude .mypy.ini
+exclude tox.ini
+
+# Exclude directories
+prune .git
+prune .github
+prune __pycache__
+prune *.egg-info
+prune build
+prune dist
+prune .pytest_cache
+prune .mypy_cache
+prune .tox
+prune .venv
+prune venv
+
+# Exclude temporary files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__
+global-exclude .DS_Store
+global-exclude *.so
+global-exclude .coverage
+global-exclude .coverage.*
