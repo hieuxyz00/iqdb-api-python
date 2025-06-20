@@ -49,9 +49,7 @@ pip install iqdb-api
 
 ### Từ source
 ```bash
-git clone https://github.com/hieuxyz00/iqdb-api-python.git
-cd iqdb-api-python
-pip install -e .
+pip install --no-cache-dir "iqdb-api-python @ git+https://github.com/hieuxyz00/iqdb-api-python.git"
 ```
 
 ### Dependencies
