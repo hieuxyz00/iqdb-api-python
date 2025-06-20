@@ -49,10 +49,9 @@ class SearchResultParser:
         # Check for errors first
         self._check_for_errors(soup)
         
-        # TODO: Queue/overload check - cần làm sau vì phức tạp
+        # TODO: Queue/overload check
         # Khi IQDB quá tải, nó sẽ hiển thị thông báo và cập nhật HTML liên tục:
         # "IQDB is currently under high load, your query has been queued. Place in queue: X"
-        # Cần implement streaming HTML updates và theo dõi queue position
         queue_status = self._parse_queue_status(soup, html)
         if queue_status:
             return SearchResult(
@@ -305,11 +304,8 @@ class SearchResultParser:
         """Parse queue/overload/stream nếu IQDB đang quá tải"""
         # Chỉ nhận queue nếu có thông báo đặc trưng
         queue_strings = [
-            'you are in a queue',
-            'please wait',
-            'queue position',
-            'your request is being processed',
-            'estimated wait'
+            'Place in queue:',
+            'your query'
         ]
         found = None
         for s in queue_strings:
@@ -319,14 +315,11 @@ class SearchResultParser:
         if found:
             import re
             queue_position = -1
-            estimated_wait = 0.0
+            estimated_wait = 0.0    # TODO
             message = found.strip()
-            m = re.search(r'queue position[:\s]*([0-9]+)', html, re.I)
+            m = re.search(r'Place in queue[:\s]*([0-9]+)', html, re.I)
             if m:
                 queue_position = int(m.group(1))
-            m = re.search(r'estimated wait[:\s]*([0-9]+)', html, re.I)
-            if m:
-                estimated_wait = float(m.group(1))
             return QueueStatus(
                 queue_position=queue_position,
                 estimated_wait=estimated_wait,
