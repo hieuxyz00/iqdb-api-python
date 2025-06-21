@@ -144,15 +144,5 @@ dmypy.json
 ehthumbs.db
 Thumbs.db
 
-# Test images
-test_images/
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.webp
-!examples/*.jpg
-!examples/*.png
-
 # tạm bỏ qua ci
 .github
