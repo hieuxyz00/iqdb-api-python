@@ -1,7 +1,6 @@
 # Include documentation
 include README.md
 include LICENSE
-include CHANGELOG.md
 
 # Include configuration files
 include pyproject.toml
@@ -9,9 +8,6 @@ include requirements.txt
 
 # Include examples
 recursive-include examples *.py
-
-# Include tests
-recursive-include tests *.py
 
 # Include type stubs if any
 recursive-include src *.pyi

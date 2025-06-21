@@ -2,11 +2,11 @@
 IQDB API Python - Thư viện tìm kiếm hình ảnh ngược trên IQDB.org
 
 Thư viện này cung cấp giao diện Python để tương tác với dịch vụ tìm kiếm hình ảnh ngược
-IQDB (Internet Query Database) tại iqdb.org.
+IQDB (Internet Query Database) tại iqdb.org và 3d.iqdb.org.
 """
 
 from .client import IqdbClient, Iqdb3dClient, SyncIqdbClient, SyncIqdb3dClient
-from .models import SearchResult, Match, YourImage, Resolution
+from .models import SearchResult, Match, YourImage, Resolution, SearchMoreInfo
 from .enums import MatchType, Rating, Source
 from .exceptions import (
     IqdbApiException,
@@ -15,36 +15,40 @@ from .exceptions import (
     NotImageException,
     InvalidFileFormatException,
     UserCancelledException,
+    NoMatchFoundException,
+    InvalidIqdbHtmlException,
+    ParseException,
+    ReadQueryResultException,
 )
 
 __version__ = "1.0.0"
 __author__ = "hieuxyz"
 
 __all__ = [
-    # Async Clients
+    # Clients
     "IqdbClient",
     "Iqdb3dClient",
-    
-    # Sync Clients
-    "SyncIqdbClient", 
+    "SyncIqdbClient",
     "SyncIqdb3dClient",
-    
     # Models
-    "SearchResult", 
+    "SearchResult",
     "Match",
     "YourImage",
     "Resolution",
-    
+    "SearchMoreInfo",
     # Enums
     "MatchType",
-    "Rating", 
+    "Rating",
     "Source",
-    
     # Exceptions
     "IqdbApiException",
     "ImageTooLargeException",
-    "HttpRequestFailedException", 
+    "HttpRequestFailedException",
     "NotImageException",
     "InvalidFileFormatException",
     "UserCancelledException",
+    "NoMatchFoundException",
+    "InvalidIqdbHtmlException",
+    "ParseException",
+    "ReadQueryResultException",
 ]
